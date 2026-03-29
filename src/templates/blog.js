@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { useIntl } from "gatsby-plugin-intl"
 
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import Layout from '../components/layout'
 import layoutStyles from '../components/layout.module.scss'
 import blogPostStyles from './blog.module.scss'
@@ -16,13 +16,13 @@ const BlogPost = (props) => {
       
       return(
             <Layout>
-                  <SEO
+                  <Seo
                         title={post.frontmatter.title}
                         description={post.frontmatter.description}
                         image={post.frontmatter.thumbnail}
                   />
                   <div className={blogPostStyles.postHeader}>
-                        <img src={post.frontmatter.thumbnail.publicURL} alt=""/>
+                        <img src={post.frontmatter.thumbnail?.publicURL} alt=""/>
                   </div>
 
                   <section className={layoutStyles.coloredSection}>

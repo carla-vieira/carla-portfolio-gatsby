@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { useIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
 
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Social from '../components/social-icons'
 import layoutStyles from '../components/layout.module.scss'
@@ -60,7 +60,7 @@ const AboutPage = (props) => {
 	const intl = useIntl()
 	return (
 		<Layout>
-			<SEO title={intl.formatMessage({ id: "about" })} lang={intl.locale} />
+			<Seo title={intl.formatMessage({ id: "about" })} lang={intl.locale} />
 			<section className={layoutStyles.coloredSection}>
 				<div className={layoutStyles.sectionContent}>
 					<AboutContainer>

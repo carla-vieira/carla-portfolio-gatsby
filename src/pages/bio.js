@@ -1,10 +1,11 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { useIntl } from "gatsby-plugin-intl"
 
 import styled from "styled-components"
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 
 import layoutStyles from '../components/layout.module.scss'
 
@@ -73,7 +74,7 @@ const BioPage = (props) => {
 
 	return (
 		<Layout>
-			<SEO title={intl.formatMessage({ id: "biography" })} />
+			<Seo title={intl.formatMessage({ id: "biography" })} />
 			<section className={layoutStyles.coloredSection}>
         			<div className={layoutStyles.sectionContent}>
 					<h1>{intl.formatMessage({ id: "biography" })}</h1>
@@ -99,8 +100,7 @@ const BioPage = (props) => {
 									Se você precisa de fotos minhas em alta resolução, pode selecionar uma das opções abaixo.
 								</p>
 								<Photos>
-									<img src="/images/bio/carla-foto-montreal-1.png" alt=""/>
-									<img src="/images/bio/carla-foto-montreal-2.png" alt=""/>
+									<img src="/images/bio/carla-foto-2026.jpeg" alt=""/>
 								</Photos>
 							</TextBox>
 						</div>
@@ -140,8 +140,8 @@ export default BioPage
 export const query = graphql`
 query {
 	bio: allMarkdownRemark(
-		sort: {fields: frontmatter___date, order: DESC}, 
-		filter: {fileAbsolutePath: {regex: "/(/content/bio)/"}}, 
+		sort: {frontmatter: {date: DESC}},
+		filter: {fileAbsolutePath: {regex: "/(/content/bio)/"}},
 		limit: 1
 	) {
 		edges {

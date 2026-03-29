@@ -1,9 +1,10 @@
 import React from "react"
+import { graphql } from "gatsby"
 // import { useIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import PageHeader from '../components/page-header'
 import TalkItem from '../components/talk-item'
 import layoutStyles from '../components/layout.module.scss'
@@ -25,7 +26,7 @@ const PodcastsPage = (props) => {
 
 	return (
 		<Layout>
-			<SEO title="Podcasts"/>
+			<Seo title="Podcasts"/>
 			<PageHeader
 				slug="podcasts"
 				title="Podcasts"
@@ -38,7 +39,7 @@ const PodcastsPage = (props) => {
 						{podcasts.map((edge) => {
 							return (
 								<TalkItem
-									image={edge.node.frontmatter.thumbnail.publicURL}
+									image={edge.node.frontmatter.thumbnail?.publicURL}
 									date={edge.node.frontmatter.date}
 									title={edge.node.frontmatter.title}
 									eventname={edge.node.frontmatter.podcastname}
@@ -55,7 +56,7 @@ const PodcastsPage = (props) => {
 
 export const PodcastsListQuery = graphql`
    query PodcastsListQuery {
-	allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "/(/content/podcasts)/"}}) {
+	allMarkdownRemark(sort: {frontmatter: {date: DESC}}, filter: {fileAbsolutePath: {regex: "/(/content/podcasts)/"}}) {
 	  edges {
 	    node {
 		frontmatter {

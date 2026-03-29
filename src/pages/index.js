@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from 'gatsby'
 import { useIntl } from "gatsby-plugin-intl"
 
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import Card from '../components/card'
 import Layout from '../components/layout'
 import YoutubeVideo from '../components/youtube-video'
@@ -22,10 +22,11 @@ const IndexPage = (props) => {
 
 	return(
 		<Layout>
-			<SEO title={intl.formatMessage({ id: "home" })} lang={intl.locale}/>
+			<Seo title={intl.formatMessage({ id: "home" })} lang={intl.locale}/>
 			<section id="header">
 				<video poster="" id="bgvid" loop muted autoPlay>
-					<source src="/images/video-carla-banner.mp4" type="video/mp4"/>
+					<source src="/images/output.webm" type="video/webm"/>
+					<source src="/images/output.mp4" type="video/mp4"/>
 				</video>
 				<div className={indexStyles.viewportHeader}>
 					<div className={indexStyles.fullHeaderContainer}>
@@ -50,7 +51,7 @@ const IndexPage = (props) => {
 							<p>{bio.map((edge) => {return (<p>{edge.node.frontmatter.bioen}</p>)})}</p>
 						)}
 						</div>	
-						<img src="/images/bio/carla-foto-montreal-1.png" className={indexStyles.aboutImage} alt=""/>
+						<img src="/images/bio/carla-foto-2026.jpeg" className={indexStyles.aboutImage} alt=""/>
 					</div>				
 				</div>
 			</section>
@@ -147,7 +148,7 @@ const IndexPage = (props) => {
 									date={edge.node.frontmatter.date}
 									title={edge.node.frontmatter.title}
 									description={edge.node.frontmatter.midianame}
-									image={edge.node.frontmatter.thumbnail.publicURL}
+									image={edge.node.frontmatter.thumbnail?.publicURL}
 								/>
 							)
 						})}
@@ -221,7 +222,7 @@ const IndexPage = (props) => {
 									date={edge.node.frontmatter.date}
 									title={edge.node.frontmatter.title}
 									description={edge.node.frontmatter.description}
-									image={edge.node.frontmatter.thumbnail.publicURL}
+									image={edge.node.frontmatter.thumbnail?.publicURL}
 								/>
 							)
 						})}
@@ -243,7 +244,7 @@ query {
 		}
 	}
 	posts: allMarkdownRemark(
-		sort: { fields: frontmatter___date, order: DESC }
+		sort: { frontmatter: { date: DESC } }
 		filter: { fileAbsolutePath: { regex: "/(/content/posts)/" } }
 		limit: 3
 	) {
@@ -266,7 +267,7 @@ query {
 		}
 	}
 	news: allMarkdownRemark(
-		sort: { fields: frontmatter___date, order: DESC }
+		sort: { frontmatter: { date: DESC } }
 		filter: { fileAbsolutePath: { regex: "/(/content/news)/" } }
 		limit: 3
 	) {
@@ -322,8 +323,8 @@ query {
 		}
 	}
 	bio: allMarkdownRemark(
-		sort: {fields: frontmatter___date, order: DESC}, 
-		filter: {fileAbsolutePath: {regex: "/(/content/bio)/"}}, 
+		sort: {frontmatter: {date: DESC}},
+		filter: {fileAbsolutePath: {regex: "/(/content/bio)/"}},
 		limit: 1
 	) {
 		edges {

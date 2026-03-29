@@ -1,5 +1,4 @@
 const path = require('path')
-const { create } = require('domain')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 module.exports.createPages = async ({ graphql, actions }) => {
@@ -9,7 +8,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
 	return graphql(
 		`{
 		  allMarkdownRemark(
-		    sort: { fields: [frontmatter___date], order: DESC }
+		    sort: { frontmatter: { date: DESC } }
 		    filter: { fileAbsolutePath: { regex: "/(/content/posts)/" } }
 		    limit: 1000
 		  ) {

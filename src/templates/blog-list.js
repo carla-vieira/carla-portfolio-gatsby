@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import classNames from 'classnames';
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import BlogItem from '../components/blog-item'
 import PageHeader from '../components/page-header'
 
@@ -26,7 +26,7 @@ const BlogListPage = (props) => {
 
 	return (
 		<Layout>
-			<SEO title='Blog' />
+			<Seo title='Blog' />
 			<PageHeader
 				slug="blog"
 				title="Blog"
@@ -45,7 +45,7 @@ const BlogListPage = (props) => {
 									description={edge.node.frontmatter.description}
 									categories={edge.node.frontmatter.categories}
 									hyperlink={edge.node.frontmatter.hyperlink}
-									image={edge.node.frontmatter.thumbnail.publicURL}
+									image={edge.node.frontmatter.thumbnail?.publicURL}
 								/>
 							)
 						})}
@@ -73,7 +73,7 @@ const BlogListPage = (props) => {
 export const BlogListQuery = graphql`
   query BlogListQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-	sort: { fields: frontmatter___date, order: DESC }
+	sort: { frontmatter: { date: DESC } }
 	filter: { fileAbsolutePath: { regex: "/(/content/posts)/" } }
       limit: $limit
       skip: $skip

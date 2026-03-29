@@ -2,7 +2,7 @@
 title: Bio
 date: 2021-07-02T12:28:13.946Z
 biopt: >
-  Carla Vieira é Engenheira de Dados e mestre em Inteligência Artificial pela
+  Carla Vieira é Engenheira de Dados Sênior e mestre em Inteligência Artificial pela
   USP. Sua pesquisa teve como foco a construção de sistemas de Inteligência
   Artificial explicáveis. Carla acredita na tecnologia como ferramenta de
   transformação social e na importância de construir uma sociedade resiliente a
@@ -18,6 +18,6 @@ bioen: Carla is a brazilian Senior Data Engineer and Google Developer Expert in
 minibiopt: "Carla Vieira é Engenheira de Dados e mestre em Inteligência
   Artificial pela USP. Foi reconhecida como Google Developer Expert em Machine
   Learning e uma das 100 mulheres brilhantes na área de IA Ética. "
-minibioen: Carla is a brazilian Data Engineer and Google Developer Expert in
+minibioen: Carla is a brazilian Senior Data Engineer and Google Developer Expert in
   Machine Learning.
 ---

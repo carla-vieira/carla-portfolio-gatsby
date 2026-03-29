@@ -3,7 +3,7 @@ import { useIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import Social from '../components/social-icons'
 
 import layoutStyles from '../components/layout.module.scss'
@@ -44,7 +44,7 @@ const ContactPage = () => {
 
 	return (
 		<Layout>
-			<SEO title={intl.formatMessage({ id: "contact" })} />
+			<Seo title={intl.formatMessage({ id: "contact" })} />
 			<section className={layoutStyles.coloredSection}>
         			<div className={layoutStyles.sectionContent}>
 					<ContactContainer>

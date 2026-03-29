@@ -125,7 +125,7 @@ const TalkItem = ({
                         <Card>
                               {image && (
                                     <CardImage>
-                                          <a href={`${image}`}><img src={image} alt=""/></a>
+                                          <a href={`${image}`}><img src={image} alt={title}/></a>
                                     </CardImage>
                               )}
                               <CardContent>

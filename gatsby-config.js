@@ -91,9 +91,21 @@ module.exports = {
 		]
 	},
 	plugins: [
-		'gatsby-plugin-sass',
-		'gatsby-plugin-netlify-cms',
-		'gatsby-plugin-react-helmet',
+		{
+		resolve: 'gatsby-plugin-sass',
+		options: {
+			sassOptions: {
+				silenceDeprecations: ['legacy-js-api'],
+			},
+			cssLoaderOptions: {
+				modules: {
+					namedExport: false,
+					exportLocalsConvention: 'camelCaseOnly',
+				},
+			},
+		},
+	},
+			'gatsby-plugin-react-helmet',
 		`gatsby-plugin-styled-components`,
 		{
 			resolve: `gatsby-plugin-manifest`,

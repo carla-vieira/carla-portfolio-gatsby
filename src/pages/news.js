@@ -1,8 +1,9 @@
 import React from "react"
+import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import PageHeader from '../components/page-header'
 import Card from '../components/card'
 import layoutStyles from '../components/layout.module.scss'
@@ -23,7 +24,7 @@ const NewsPage = (props) => {
 
 	return (
 		<Layout>
-			<SEO title="News"/>
+			<Seo title="News"/>
 			<PageHeader
 				slug="news"
 				title="News"
@@ -41,7 +42,7 @@ const NewsPage = (props) => {
                                     date={edge.node.frontmatter.date}
                                     title={edge.node.frontmatter.title}
                                     description={edge.node.frontmatter.midianame}
-                                    image={edge.node.frontmatter.thumbnail.publicURL}
+                                    image={edge.node.frontmatter.thumbnail?.publicURL}
                                 />
                             )
 						})}	
@@ -54,7 +55,7 @@ const NewsPage = (props) => {
 
 export const NewsListQuery = graphql`
    query NewsListQuery {
-	allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "/(/content/news)/"}}) {
+	allMarkdownRemark(sort: {frontmatter: {date: DESC}}, filter: {fileAbsolutePath: {regex: "/(/content/news)/"}}) {
 	  edges {
 	    node {
 		frontmatter {

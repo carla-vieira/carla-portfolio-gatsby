@@ -4,7 +4,7 @@ import { useIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import PageHeader from '../components/page-header'
 import TalkItem from '../components/talk-item'
 
@@ -39,7 +39,7 @@ const SpeakingPage = (props) => {
 
 	return (
 		<Layout>
-			<SEO title={intl.formatMessage({ id: "speaking" })} />
+			<Seo title={intl.formatMessage({ id: "speaking" })} />
 			<PageHeader
 				slug="speaking"
 				title={intl.formatMessage({ id: "speaking" })}
@@ -52,7 +52,7 @@ const SpeakingPage = (props) => {
 						{talks.map((edge) => {
 							return (
 								<TalkItem
-									image={edge.node.frontmatter.thumbnail.publicURL}
+									image={edge.node.frontmatter.thumbnail?.publicURL}
 									date={edge.node.frontmatter.date}
 									title={edge.node.frontmatter.title}
 									eventname={edge.node.frontmatter.eventname}
@@ -70,7 +70,7 @@ const SpeakingPage = (props) => {
 
 export const TalksListQuery = graphql`
    query TalksListQuery {
-	allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "/(/content/talks)/"}}) {
+	allMarkdownRemark(sort: {frontmatter: {date: DESC}}, filter: {fileAbsolutePath: {regex: "/(/content/talks)/"}}) {
 	  edges {
 	    node {
 		frontmatter {

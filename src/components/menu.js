@@ -33,7 +33,7 @@ const Menu = () => {
                   <Language />
 
                   {/* Button for mobile */}
-                  <button onClick={() => setMenuActive(!menuActive)} className={classNames({ [menuStyles.activeOne]: menuActive })}>
+                  <button aria-label="Toggle menu" onClick={() => setMenuActive(!menuActive)} className={classNames({ [menuStyles.activeOne]: menuActive })}>
                         <span className={classNames({ [menuStyles.hamburger]: true, [menuStyles.hamburgerOne]: true })}></span>
                   </button>
 
